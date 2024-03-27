@@ -18,35 +18,34 @@
 
     <h2>Atividades Pendentes</h2>
 
+    <a href="/activity/new" class="nes-btn is-primary">nova atividade</a>
+
+    <div class="nes-container is-rounded is-dark" th:if="${message != null}" >
+        <p th:text="${message}"></p>
+    </div>
+
     <section class="grid">
         <div th:each="activity : ${activitys}" class="nes-container with-title ">
-            <p class="title"th:text="${activity}"></p>
-            <p>Good morning. Thou hast had a good night's sleep, I hope.</p>
+            <p class="title"th:text="${activity.title}"></p>
+            <p th:text="${activity.description}"></p>
             <a href="#" class="nes-badge is-icon">
                 <span class="is-warning"><i class="nes-icon star is-small"></i></span>
-                <span class="is-primary">100</span>
+                <span class="is-primary" th:text="${activity.score}"></span>
             </a>
-            <progress class="nes-progress is-success" value="50" max="100"></progress>
+            <progress class="nes-progress is-success" th:value="${activity.status}" max="100"></progress>
 
             <details>
                 <summary>actions</summary>
                 <button type="button" class="nes-btn is-primary">coletar</button>
                 <button type="button" class="nes-btn is-warning">editar</button>
-                <button type="button" class="nes-btn is-error">apagar</button>
+                <a th:href="${'/activity/delete/' + activity.id}" class="nes-btn is-error">apagar</a>
+                
             </details>
 
 
         </div>
     </section>
 
-
-<!--
-    <ul>
-        <li th:each="activity : ${activitys}" th:text="${activity}"></li>
-    </ul>
-
-      <p th:text="${activitys}"></p> 
--->
     
 </body>
 </html>
