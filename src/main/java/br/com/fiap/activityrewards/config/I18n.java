@@ -5,7 +5,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ResourceBundleMessageSource;
 
-
 @Configuration
 public class I18n {
 
@@ -15,6 +14,4 @@ public class I18n {
         ms.setBasename("messages");
         return ms;
     }
-
-
 }

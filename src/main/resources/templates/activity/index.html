@@ -38,7 +38,13 @@
                 <summary>actions</summary>
                 <button type="button" class="nes-btn is-primary">coletar</button>
                 <button type="button" class="nes-btn is-warning">editar</button>
-                <a th:href="${'/activity/delete/' + activity.id}" class="nes-btn is-error">apagar</a>
+                <form th:action="${'/activity/' + activity.id}" method="post">
+                    <input type="hidden" name="_method" value="delete"/>
+                    <button class="nes-btn is-error">
+                        apagar
+                    </button>
+                </form>
+                
                 
             </details>
 
