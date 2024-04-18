@@ -13,8 +13,8 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http)throws Exception{
         return http
                 .authorizeHttpRequests(auth -> auth.anyRequest().authenticated())
-                .formLogin(Customizer.withDefaults())
-                .oauth2Login(Customizer.withDefaults())
+                .oauth2Login(login -> login.loginPage("/login").defaultSuccessUrl("/activity"))
+                .logout(logout -> logout.logoutUrl("logout").logoutSuccessUrl("/login"))
                 .build();
     }
 

@@ -16,9 +16,9 @@
 
     <h1>Activity Rewards</h1>
 
-    <h2>Cadastrar Tarefa </h2>
+    <h2>Cadastrar Tarefa</h2>
 
-    <form action="/activity" class="container" method="POST" th:object="${activity}" >
+    <form th:action="${'/activity'}" class="container" method="POST" th:object="${activity}" >
         <div class="nes-field">
             <label for="title">Título</label>
             <input th:field="*{title}" class="nes-input" th:classappend="${#fields.hasErrors('title')} ? is-error " >

@@ -12,8 +12,16 @@
     <link rel="stylesheet" href="global.css">
     <title>Activity Rewards - Atividades</title>
 </head>
+
 <body>
 
+    <nav>
+        <span th:text="${user}"></span>
+        <img th:src="${avatar}" alt="avatar do usuário" class="nes-avatar is-medium is-rounded">
+        <a href="/logout" class="nes-btn">
+            sair
+        </a>
+    </nav>
     <h1>Activity Rewards</h1>
 
     <h2>Atividades Pendentes</h2>
