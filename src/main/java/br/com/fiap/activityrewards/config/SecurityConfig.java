@@ -1,24 +1,37 @@
 package br.com.fiap.activityrewards.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.web.SecurityFilterChain;
 
+import br.com.fiap.activityrewards.auth.CustomUserService;
+
 @Configuration
 public class SecurityConfig {
     
+    @Autowired
+    CustomUserService customUserService;
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http)throws Exception{
         return http
-                .authorizeHttpRequests(auth -> auth.anyRequest().authenticated())
+                .csrf(csrf -> csrf.disable())
+                .headers(headers -> headers.frameOptions(frame -> frame.disable()))
+                .authorizeHttpRequests(auth -> auth
+                    .requestMatchers("*.css").permitAll()
+                    .anyRequest()
+                    .authenticated()
+                )
                 .oauth2Login(login -> login
                     .loginPage("/login")
                     .defaultSuccessUrl("/activity")
+                    .userInfoEndpoint(userInfo -> userInfo.userService(customUserService))
                     .permitAll()
                 )
-                .logout(logout -> logout.logoutUrl("logout").logoutSuccessUrl("/login"))
+                .logout(logout -> logout.logoutUrl("/logout").logoutSuccessUrl("/login"))
                 .build();
     }
 
