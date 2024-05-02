@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
 
 import br.com.fiap.activityrewards.user.User;
 import br.com.fiap.activityrewards.user.UserRepository;
-import lombok.extern.slf4j.Slf4j;
 
 @Component
 public class LoginListener implements ApplicationListener<AuthenticationSuccessEvent> {
