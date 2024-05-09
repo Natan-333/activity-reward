@@ -28,6 +28,9 @@ public class ActivityController {
     ActivityRepository repository;
 
     @Autowired
+    ActivityService service;
+
+    @Autowired
     MessageSource messageSource;
 
     @GetMapping
@@ -38,6 +41,7 @@ public class ActivityController {
         model.addAttribute("activitys", repository.findAll());
         model.addAttribute("user", user.getAttribute("name"));
         model.addAttribute("avatar", user.getAttribute("avatar_url"));
+        model.addAttribute("principal", myuser);
         return "activity/index";
     }
 
@@ -67,5 +71,36 @@ public class ActivityController {
         repository.save(activity);
         redirect.addFlashAttribute("message", "Tarefa cadastrada com sucesso");
         return "redirect:/activity";
+    }
+
+    @PostMapping("/catch/{id}")
+    public String catchActivity(@PathVariable Long id, @AuthenticationPrincipal DefaultOAuth2User user){
+        User myuser = (User) user;
+         service.catchActivity(id, myuser);
+         return "redirect:/activity";
+    }
+
+    @PostMapping("/drop/{id}")
+    public String dropcAtivity(@PathVariable Long id, @AuthenticationPrincipal DefaultOAuth2User user){
+        User myuser = (User) user;
+        service.dropActivity(id, myuser);
+        return "redirect:/activity";
+
+    }
+
+    @PostMapping("/inc/{id}")
+    public String inc(@PathVariable Long id, @AuthenticationPrincipal DefaultOAuth2User user){
+        User myuser = (User) user;
+        service.inc(id, myuser);
+        return "redirect:/activity";
+
+    }
+
+    @PostMapping("/dec/{id}")
+    public String dec(@PathVariable Long id, @AuthenticationPrincipal DefaultOAuth2User user){
+        User myuser = (User) user;
+        service.dec(id, myuser);
+        return "redirect:/activity";
+
     }
 }

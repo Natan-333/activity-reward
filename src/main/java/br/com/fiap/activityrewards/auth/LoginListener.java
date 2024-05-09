@@ -23,7 +23,7 @@ public class LoginListener implements ApplicationListener<AuthenticationSuccessE
         var user = repository.findByEmail(email);
 
         if(user.isEmpty()){
-            var newUser = new User();
+            var newUser = new User(principal);
             repository.save(newUser);
         }
     }
