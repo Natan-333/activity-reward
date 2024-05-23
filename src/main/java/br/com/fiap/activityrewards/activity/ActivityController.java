@@ -38,7 +38,7 @@ public class ActivityController {
         User myuser = (User) user;
         log.info("usuario carregado: "+ myuser);
         
-        model.addAttribute("activitys", repository.findAll());
+        model.addAttribute("activitys", repository.findByStatusLessThan(100));
         model.addAttribute("user", user.getAttribute("name"));
         model.addAttribute("avatar", user.getAttribute("avatar_url"));
         model.addAttribute("principal", myuser);
