@@ -47,8 +47,6 @@ public class User extends DefaultOAuth2User {
         this.name = principal.getAttribute("name");
         this.email = principal.getAttribute("email");
         this.avatarUrl = principal.getAttribute("avatar_url");
-    }
-
-    
-
+        this.score = 0;
+    }    
 }

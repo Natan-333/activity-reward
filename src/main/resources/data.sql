@@ -1,7 +1,7 @@
 INSERT INTO ACTIVITY_USER (id, name, email, avatar_url, score)
 VALUES (99, 'Carolina de Estefano', 'Carolina@fiap.com.br', 'https://i.pravatar.cc/150?img=40', 40);
 
-INSERT INTO ACTIVITY_USER (id, name, email, avatar_url,score)
+INSERT INTO ACTIVITY_USER (id, name, email, avatar_url, score)
 VALUES (98, 'José da Silva', 'jose@fiap.com.br', 'https://i.pravatar.cc/150?img=59', 30);
 
 INSERT INTO ACTIVITY (title, description, score, status, user_id) 

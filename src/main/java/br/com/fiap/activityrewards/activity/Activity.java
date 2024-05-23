@@ -29,10 +29,10 @@ public class Activity {
     @NotBlank(message = "{activity.title.notblank}")
     private String title;
     
-    @Size(min = 10, max = 255, message = "{activity.descrption.size}")
+    @Size(min = 10, max = 255, message = "{activity.description.size}")
     private String description;
     
-    @Positive(message = "{activity.score.positeve}")
+    @Positive(message = "{activity.score.positive}")
     private int score;
     
     @Min(0) @Max(100)

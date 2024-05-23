@@ -14,11 +14,8 @@ public class UserService {
             () -> new IllegalArgumentException("usuário não encontrado")
         );
             user.setScore(user.getScore() + score);
+            System.out.println(user);
             repository.save(user);
         }
-
-    
-
-
     
 }

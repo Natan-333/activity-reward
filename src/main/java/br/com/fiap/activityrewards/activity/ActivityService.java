@@ -43,7 +43,7 @@ public class ActivityService {
         var activity = repository.findById(id).orElseThrow(
             () -> new IllegalArgumentException("tarefa não encontrada")
         );
-        if (activity.getStatus() +10 > 100) return;
+        if (activity.getStatus() + 10 > 100) return;
          activity.setStatus(activity.getStatus() + 10);
 
         if (activity.getStatus() == 100){
